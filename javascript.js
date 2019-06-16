@@ -86,7 +86,6 @@ function updateWeatherBackground(weatherPrimary, weatherSecondary,sunriseTime, s
         $(".selected").css("color", "rgb(28, 39, 51)");
     }
     
-
     if ( weatherPrimary == "Clear" ) {
         $("#weather-text").text("clear");
         if ( dayTime ) {
@@ -117,7 +116,7 @@ function updateWeatherBackground(weatherPrimary, weatherSecondary,sunriseTime, s
         if ( dayTime ) {
             $("img").attr("src", "https://res.cloudinary.com/aeroware/image/upload/v1497522845/danieledesantis-weather-icons-rainy_uqq06h.svg");
         } else {
-            $("img").attr("src", "https://res.cloudinary.com/aeroware/image/upload/v1497522842/danieledesantis-weather-icons-night-rainy_nduxzx.svgg");
+            $("img").attr("src", "https://res.cloudinary.com/aeroware/image/upload/v1497522842/danieledesantis-weather-icons-night-rainy_nduxzx.svg");
         }
 
     } else if (weatherPrimary == "Snow") {
