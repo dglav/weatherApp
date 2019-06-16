@@ -3,13 +3,13 @@ contentAlign();
 try {
     navigator.geolocation.getCurrentPosition(function (pos) {
         var lat = pos.coords.latitude;
-        var long = pos.coords.longitude;
+        var lon = pos.coords.longitude;
+        
+        console.log(lat);
+        console.log(lon);
 
-        // Test various locations
-        // lat = 40.728373;
-        // long = -74.172490;
-
-        getWeatherData(lat, long);
+        getLocationData(lat, lon);
+        getWeatherData(lat, lon);
     });
 } 
 catch (e) {
@@ -64,14 +64,12 @@ function contentAlign() {
 }
 
 
-function updateWeatherData(temp, city, country) {
+function updateWeatherData(temp) {
     if ( $("#F").hasClass('selected') ){
         $("#temp").text((1.8 * (temp - 273) + 32).toFixed(0));
     } else if ( $("#C").hasClass('selected') ) {
         $("#temp").text((temp - 273.15).toFixed(1));
     }
-    
-    $("#location").text(city + ", " + country);
 }
 
 function updateWeatherBackground(weatherPrimary, weatherSecondary,sunriseTime, sunsetTime) {
@@ -133,6 +131,25 @@ function updateWeatherBackground(weatherPrimary, weatherSecondary,sunriseTime, s
     }
 }
 
+function getLocationData(lat, lon) {
+    const opencagekey = "6daa0692bd8a4dd194cc0bc820eb0b4f"
+    const api = `https://api.opencagedata.com/geocode/v1/json?key=${opencagekey}&q=${lat}%2C+${lon}&language=en&pretty=1`
+
+    $.getJSON( api, {
+        format: "json"
+    })
+        .done(function ( response ) {
+            console.log(response);
+
+            var city = response.results[0].components.city;  // [-]
+            var country = response.results[0].components.country;  // [-]
+            $("#location").text(city + ", " + country);
+        })
+        .fail(function ( response ) {
+            alert('Reverse Geocoding API call failed');
+        });
+}
+
 function getWeatherData(lat, lon) {
     const openweathermapkey = "702be017e2a96887878d8cc987da071c";
     var api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${openweathermapkey}`;
@@ -148,18 +165,15 @@ function getWeatherData(lat, lon) {
             var weatherPrimary = response.weather[0].main;  // [-]
             var weatherSecondary = response.weather[0].description;  // [-]
     
-            var city = response.name;  // [-]
-            var country = response.sys.country;  // [-]
-
             console.log(weatherPrimary);
             console.log(weatherSecondary);
 
-            updateWeatherData(temp, city, country);
+            updateWeatherData(temp);
             updateWeatherBackground(weatherPrimary, weatherSecondary, sunriseTime, sunsetTime);
             $("body").css("display", "block")
             return 1
         })
         .fail(function() {
-            alert('API call failed');
+            alert('Weather API call failed');
         }); 
 }
