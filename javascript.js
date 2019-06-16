@@ -1,10 +1,3 @@
-// PR1: Add cookies to store access rights to geolocator
-// PR2: Get correct output strings for weather checking
-
-// development-only flags (remove for production)
-var use_google_api = false;
-var use_weather_api = true;
-
 contentAlign();
 
 try {
@@ -16,16 +9,7 @@ try {
         // lat = 40.728373;
         // long = -74.172490;
 
-        if (use_google_api) {
-            var loc = getLocationData(lat, long);
-            $("#location").text(loc.city + ", " + loc.country);
-        } else {
-            $("#location").text("Nagoya" + ", " + "Japan");
-        }
-
-        if (use_weather_api) {
-            getWeatherData(lat, long);
-        }
+        getWeatherData(lat, long);
     });
 } 
 catch (e) {
@@ -96,15 +80,12 @@ function updateWeatherBackground(weatherPrimary, weatherSecondary,sunriseTime, s
     if (curDate > sunriseTime && curDate < sunsetTime) {
         dayTime = true;
         $("body").css("background", "rgb(86, 149, 191)");
-        console.log(dayTime);
     } else {
         dayTime = false;
         $("body").css("background", "rgb(28, 39, 51)");
         $(".selected").css("color", "rgb(28, 39, 51)");
-        console.log(dayTime);
     }
-        
-    console.log(dayTime);
+    
 
     if ( weatherPrimary == "Clear" ) {
         $("#weather-text").text("clear");
@@ -153,60 +134,6 @@ function updateWeatherBackground(weatherPrimary, weatherSecondary,sunriseTime, s
     }
 }
 
-function getLocationData(lat, long) {
-    const googleAPIKey = "&key=AIzaSyAh9wBj38F0d2pYh5Xxw7I731iUWsvpucs";
-
-    var googleLocationSite =
-        "https://maps.googleapis.com/maps/api/geocode/json?latlng=" +
-        lat +
-        "," +
-        long +
-        googleAPIKey;
-
-    $.getJSON(googleLocationSite, function (json) {
-        console.log(json);
-        var location = json.results[0].address_components;
-
-        // Because address are not always formatted the same
-        for (i = 0; i < location.length; i++) {
-            for (j = 0; j < location[i].types.length; j++) {
-                if (location[i].types[j] == "locality") {
-                    var city = location[i].short_name;
-                    // console.log("The city is " + city);
-                } else if (location[i].types[j] == "country") {
-                    var country = location[i].long_name;
-                    // console.log("The country is " + country);
-                }
-            }
-        }  
-    });
-    city = 'Nagoya'
-    country = 'Japan'
-    return { city, country }
-}
-
-function getWeatherData_darksky(lat, long) {
-    const darkskyAPIKey = "e94975b33e4f54c7dfd26b844d587681";
-
-    var darksky =
-        "https://crossorigin.me/https://api.darksky.net/forecast/" +
-        darkskyAPIKey +
-        "/" +
-        lat +
-        "," +
-        long;
-
-    $.getJSON(darksky, function (weather) {
-        console.log(weather);
-        var appTempF = weather.currently.apparentTemperature;
-        var sunrise = new Date(weather.daily.data[0].sunriseTime);
-        var sunset = weather.daily.data[0].sunsetTime;
-        var sky = weather.currently.icon;
-    });
-
-    return { appTempF, sunrise, sunset, sky }
-}
-
 function getWeatherData(lat, lon) {
     const openweathermapkey = "702be017e2a96887878d8cc987da071c";
     var api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${openweathermapkey}`;
@@ -233,6 +160,6 @@ function getWeatherData(lat, lon) {
             return 1
         })
         .fail(function() {
-            console.log("error")
+            alert('API call failed');
         }); 
 }
