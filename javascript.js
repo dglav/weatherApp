@@ -156,6 +156,7 @@ function getWeatherData(lat, lon) {
 
             updateWeatherData(temp, city, country);
             updateWeatherBackground(weatherPrimary, weatherSecondary, sunriseTime, sunsetTime);
+            $("body").css("display", "block")
             return 1
         })
         .fail(function() {
