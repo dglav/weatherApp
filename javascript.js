@@ -109,7 +109,7 @@ function updateWeatherBackground(weatherPrimary, weatherSecondary,sunriseTime, s
 
 function getWeatherData(lat, lon) {
     const openweathermapkey = "702be017e2a96887878d8cc987da071c";
-    var api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${openweathermapkey}`;
+    var api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${openweathermapkey}/`;
 
     $.getJSON( api, {
         format: "json"
