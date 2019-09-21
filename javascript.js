@@ -83,7 +83,7 @@ function updateWeatherBackground(weatherPrimary, weatherSecondary,sunriseTime, s
     } else {
         dayTime = false;
         $("body").css("background", "rgb(28, 39, 51)");
-        $(".selected").css("color", "rgb(28, 39, 51)");
+        $("button").css("color", "rgb(28, 39, 51)");
     }
     
     if ( weatherPrimary == "Clear" ) {

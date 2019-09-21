@@ -1,6 +1,21 @@
-body {
+html, body {
   width: 100%;
   height: 100%;
+  font-size: 16px;
+}
+
+.container {
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.row {
+  width: 100%;
+}
+
+body {
   overflow-x: hidden;
   padding: 0;
   margin: 0;
@@ -11,73 +26,116 @@ body {
   font-family: 'Overpass', sans-serif;
 }
 
-img {
-  position: absolute;
-  right: -3vw;
-  width: 70vh;
-  top: 15vh;
-  transition: ease 0.5s;
+/* Content */
+
+  #banner, #mini-container {
+    padding-bottom: 30px;
+  }
+
+  .content {
+    z-index: 1;
+    flex-grow: 1;
+    width: 25%;
+    padding: 0 15px;
+  }
+
+  h1 {
+    font-size: 2em;
+    font-weight: normal;
+    margin-top: 0;
+  }
+
+  p {
+    font-size: 1.5em;
+    margin: 0;
+  }
+
+  #temp {
+    font-size: 2em;
+    display: inline-block;
+  }
+
+  #temp-deg {
+    font-size: 2.5em;
+    display: inline-block;
+  }
+
+  #mini-container .image {
+    display: none;
+  }
+
+  button {
+    display: inline-block;
+    background: none;
+    border: 3px solid white;
+    border-radius: 5px;
+    color: white;
+    font-size: 2em;
+    transition: ease 0.5s;
+  }
+
+  .inactive:hover {
+    background: white;
+    color: rgb(86, 149, 191);
+    transition: ease 0.5s;
+    cursor: pointer;
+  }
+
+  button:focus {
+    outline: none;
+  }
+
+  .selected {
+    background: white;
+    color: rgb(86, 149, 191);
+  }
+
+/* Image */
+
+  div.image {
+    flex-grow: 1;
+    margin-right: -3%;
+  }
+
+  img {
+    transition: ease 0.5s;
+    z-index: 0;
+    width: 100%;
+  }
+
+  img:hover {
+    transition: ease 0.5s;
+    transform: scale(1.2);
+  }
+
+
+@media screen and (max-width: 768px) {
+  html, body {
+    font-size: 12px;
+  }
 }
 
-img:hover {
-  right: -2vw;
-  top: 12.5vh;
-  width: 75vh;
-  transition: ease 0.5s;
-}
+@media screen and (max-width: 425px) {
+  #side-image {
+    display: none;
+  }
 
-/* The rest of the formatting for this is done in Javascript */
-#content {
-  position: absolute;
-}
+  #mini-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-h1 {
-  font-size: 2em;
-  margin-top: 0;
-}
+    #temp-container {
+      width: 40%;
+    }
+  
+    #mini-container .image {
+      display: block;
+      width: 40%;
+    }
 
-p {
-  margin: 0;
-}
-
-#temp-container {
-  height: 100px;
-  margin-top: 50px;
-}
-
-#temp {
-  font-size: 3em;
-  margin-bottom: 30px;
-  display: inline-block;
-}
-
-#temp-deg {
-  font-size: 2.8em;
-  display: inline-block;
-}
-
-button {
-  display: inline-block;
-  background: none;
-  border: 3px solid white;
-  border-radius: 5px;
-  color: white;
-  font-size: 2em;
-  transition: ease 0.5s;
-}
-
-.inactive:hover {
-  background: white;
-  color: rgb(86, 149, 191);
-  transition: ease 0.5s;
-  cursor: pointer;
-}
-
-button:focus {
-  outline: none;
-}
-
-.selected {
-  background: white;
-  color: rgb(86, 149, 191);
+      #mini-container .image img {
+        width: 75%;
+      }
 }

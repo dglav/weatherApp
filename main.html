@@ -12,24 +12,35 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body style="display:none;">
-        <img src="https://res.cloudinary.com/aeroware/image/upload/v1497522848/danieledesantis-weather-icons-sunny_ifhcu4.svg" alt="Current Weather">
-    
-        <section id="content">
-            <h1>Weather app for you and your friends!</h1>
-            <h1>みんなの天気アップリ</h1>
-            <p>It's <span id="weather-text">sunny</span> in</a>
-                <p id="location">?</p>
+        <div class="container">
+            <div class="content">
+                <div id="banner">
+                    <h1>Weather app for you and your friends!</h1>
+                    <h1>みんなの天気アップリ</h1>
+                    <p>It's <span id="weather-text">sunny</span> in</p>
+                    <p id="location">?</p>
+                </div>
             
-                <div id="temp-container">
-                <p id="temp">25</p>
-                <p id="temp-deg">&deg</p>
-                <br>
+                <div id="mini-container">
+                    <div id="temp-container">
+                        <p id="temp">25</p>
+                        <p id="temp-deg">&deg</p>
+                        <br>
+                    </div>
+                    <div class="image">
+                        <img src="https://res.cloudinary.com/aeroware/image/upload/v1497522848/danieledesantis-weather-icons-sunny_ifhcu4.svg" alt="Current Weather">
+                    </div>
+                </div>
+                
                 <div id="temp-selectors">
                     <button id="C" class="selected"><span>&deg</span>C</button>
                     <button id="F"><span>&deg</span>F</button>
                 </div>
-                </div>
-        </section>
+            </div>
+            <div class="image" id="side-image">
+                <img src="https://res.cloudinary.com/aeroware/image/upload/v1497522848/danieledesantis-weather-icons-sunny_ifhcu4.svg" alt="Current Weather">
+            </div>
+        </div>        
         
         <script
             src="https://code.jquery.com/jquery-3.4.1.min.js"
