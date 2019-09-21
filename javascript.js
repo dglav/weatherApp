@@ -1,5 +1,3 @@
-contentAlign();
-
 try {
     navigator.geolocation.getCurrentPosition(function (pos) {
         var lat = pos.coords.latitude;
@@ -39,30 +37,6 @@ $("#C").click(function () {
 
 
 // Functions
-function contentAlign() {
-    var windowWidth = $(window).width();
-    var windowHeight = $(window).height();
-    var contentWidth = 222; //px
-    var contentHeight = 354; //px
-
-    var leftPosition = 1.03 / 2 * windowWidth - 0.35 * windowHeight - contentWidth / 2; //in pixels
-    if (leftPosition >= 0) {
-        leftPosition *= 100 / windowWidth; //convert to %
-    } else {
-        leftPosition = 0;
-    }
-
-    var topPosition = (windowHeight - contentHeight) / 2;
-    if (topPosition >= 0) {
-        topPosition *= 100 / windowHeight; //convert to %
-    } else {
-        topPosition = 0;
-    }
-
-    $("#content").css("left", leftPosition + "%");
-    $("#content").css("top", topPosition + "%");
-}
-
 
 function updateWeatherData(temp, city, country) {
     if ( $("#F").hasClass('selected') ){
@@ -141,7 +115,6 @@ function getWeatherData(lat, lon) {
         format: "json"
     })
         .done(function( response ) {
-            console.log(response);
             var temp = response.main.temp;  // [K]
             var sunriseTime = new Date(response.sys.sunrise);  // unix, UTC [s]
             var sunsetTime = new Date(response.sys.sunset);  // unix, UTC [s]
@@ -150,10 +123,7 @@ function getWeatherData(lat, lon) {
     
             var city = response.name;  // [-]
             var country = response.sys.country;  // [-]
-
-            console.log(weatherPrimary);
-            console.log(weatherSecondary);
-
+s
             updateWeatherData(temp, city, country);
             updateWeatherBackground(weatherPrimary, weatherSecondary, sunriseTime, sunsetTime);
             $("body").css("display", "block")
