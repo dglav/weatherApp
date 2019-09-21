@@ -111,8 +111,6 @@ function getWeatherData(lat, lon) {
     const openweathermapkey = "702be017e2a96887878d8cc987da071c";
     var api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${openweathermapkey}`;
 
-    console.log(api);
-
     $.getJSON( api, {
         format: "json"
     })
