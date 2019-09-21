@@ -111,6 +111,8 @@ function getWeatherData(lat, lon) {
     const openweathermapkey = "702be017e2a96887878d8cc987da071c";
     var api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${openweathermapkey}/`;
 
+    console.log(api);
+
     $.getJSON( api, {
         format: "json"
     })
@@ -123,7 +125,7 @@ function getWeatherData(lat, lon) {
     
             var city = response.name;  // [-]
             var country = response.sys.country;  // [-]
-s
+
             updateWeatherData(temp, city, country);
             updateWeatherBackground(weatherPrimary, weatherSecondary, sunriseTime, sunsetTime);
             $("body").css("display", "block")
