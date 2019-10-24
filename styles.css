@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   font-size: 16px;
@@ -23,94 +24,104 @@ body {
   text-align: center;
   color: white;
   background: rgb(86, 149, 191);
-  font-family: 'Overpass', sans-serif;
+  font-family: "Overpass", sans-serif;
 }
 
 /* Content */
 
-  #banner, #mini-container {
-    padding-bottom: 30px;
-  }
+#banner,
+#mini-container {
+  padding-bottom: 30px;
+}
 
-  .content {
-    z-index: 1;
-    flex-grow: 1;
-    width: 25%;
-    padding: 0 15px;
-  }
+.content {
+  z-index: 1;
+  flex-grow: 1;
+  width: 25%;
+  padding: 0 15px;
+}
 
-  h1 {
-    font-size: 2em;
-    font-weight: normal;
-    margin-top: 0;
-  }
+h1 {
+  font-size: 2em;
+  font-weight: normal;
+  margin-top: 0;
+}
 
-  p {
-    font-size: 1.5em;
-    margin: 0;
-  }
+p {
+  font-size: 1.5em;
+  margin: 0;
+}
 
-  #temp {
-    font-size: 2em;
-    display: inline-block;
-  }
+#temp {
+  font-size: 2em;
+  display: inline-block;
+}
 
-  #temp-deg {
-    font-size: 2.5em;
-    display: inline-block;
-  }
+#temp-deg {
+  font-size: 2.5em;
+  display: inline-block;
+}
 
-  #mini-container .image {
-    display: none;
-  }
+#mini-container .image {
+  display: none;
+}
 
-  button {
-    display: inline-block;
-    background: none;
-    border: 3px solid white;
-    border-radius: 5px;
-    color: white;
-    font-size: 2em;
-    transition: ease 0.5s;
-  }
+button {
+  display: inline-block;
+  background: none;
+  border: 3px solid white;
+  border-radius: 5px;
+  color: white;
+  font-size: 2em;
+  transition: ease 0.5s;
+}
 
-  .inactive:hover {
-    background: white;
-    color: rgb(86, 149, 191);
-    transition: ease 0.5s;
-    cursor: pointer;
-  }
+.night-time {
+  background: rgb(28, 39, 51);
+  color: white;
+}
 
-  button:focus {
-    outline: none;
-  }
+.inactive:hover {
+  background: white;
+  color: rgb(86, 149, 191);
+  transition: ease 0.5s;
+  cursor: pointer;
+}
 
-  .selected {
-    background: white;
-    color: rgb(86, 149, 191);
-  }
+button:focus {
+  outline: none;
+}
+
+.selected {
+  background: white;
+  color: rgb(86, 149, 191);
+}
+
+.selected.night-time {
+  color: rgb(28, 39, 51);
+}
 
 /* Image */
 
-  div.image {
-    flex-grow: 1;
-    margin-right: -3%;
-  }
+div.image {
+  flex-grow: 1;
+  margin-right: -3%;
+}
 
-  img {
-    transition: ease 0.5s;
-    z-index: 0;
-    width: 100%;
-  }
+img {
+  transition: ease 0.5s;
+  z-index: 0;
+  width: 100%;
+}
 
-  img:hover {
-    transition: ease 0.5s;
-    transform: scale(1.1);
-  }
-
+img:hover {
+  transition: ease 0.5s;
+  transform: scale(1.1);
+}
 
 @media screen and (max-width: 768px) {
-  html, body {
+  html,
+  body {
     font-size: 12px;
   }
 }
@@ -126,16 +137,16 @@ body {
     justify-content: center;
   }
 
-    #temp-container {
-      width: 40%;
-    }
-  
-    #mini-container .image {
-      display: block;
-      width: 40%;
-    }
+  #temp-container {
+    width: 40%;
+  }
 
-      #mini-container .image img {
-        width: 75%;
-      }
+  #mini-container .image {
+    display: block;
+    width: 40%;
+  }
+
+  #mini-container .image img {
+    width: 75%;
+  }
 }
